@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global AG Pilgrim - Investment & Trading Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Cover Page -->
+    <div id="cover-page" class="page active">
+        <div class="hero-section">
+            <div class="background-animation"></div>
+            <div class="content">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    <h1>Global AG Pilgrim</h1>
+                </div>
+                <p class="tagline">Revolutionary Trading Platform for the Modern Investor</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI-Powered Trading</h3>
+                        <p>Automated trading with 5-second market response</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-coins"></i>
+                        <h3>Crypto & Forex</h3>
+                        <p>Trade Pilgrim Coin, Forex, Gold, and more</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Secure Platform</h3>
+                        <p>Advanced security with KYC verification</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-university"></i>
+                        <h3>Bank Shares</h3>
+                        <p>Invest in Global Bank Nigeria shares</p>
+                    </div>
+                </div>
+                
+                <div class="owner-info">
+                    <p>Owned by <strong>Olawale Abdul-ganiyu Adeshina</strong></p>
+                </div>
+                
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="showPage('login')">Login</button>
+                    <button class="btn btn-secondary" onclick="showPage('register')">Register Now</button>
+                </div>
+                
+                <div class="share-info">
+                    <div class="info-box">
+                        <h4>Global Bank Nigeria Shares</h4>
+                        <p>$2,000,000 Capital | $5 per Share</p>
+                        <button class="btn btn-info" onclick="showShareModal()">
+                            <i class="fas fa-envelope"></i> Request Shares
+                        </button>
+                    </div>
+                    <div class="info-box">
+                        <h4>Pilgrim Coin</h4>
+                        <p>Starting Price: $0.50 USD</p>
+                        <p>Market-regulated trading</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Page -->
+    <div id="login-page" class="page">
+        <div class="auth-container">
+            <button class="back-btn" onclick="showPage('cover')"><i class="fas fa-arrow-left"></i> Back</button>
+            <div class="auth-header">
+                <i class="fas fa-chart-line"></i>
+                <h2>Login to Your Account</h2>
+            </div>
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <div class="form-group">
+                    <label>Login As</label>
+                    <select id="login-type">
+                        <option value="customer">Customer</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Login</button>
+            </form>
+            <p class="auth-footer">
+                Don't have an account? <a href="#" onclick="showPage('register')">Register</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Registration Page -->
+    <div id="register-page" class="page">
+        <div class="auth-container">
+            <button class="back-btn" onclick="showPage('cover')"><i class="fas fa-arrow-left"></i> Back</button>
+            <div class="auth-header">
+                <i class="fas fa-user-plus"></i>
+                <h2>Create Account</h2>
+            </div>
+            <form id="register-form" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="reg-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="reg-email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="reg-phone" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="reg-password" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="reg-confirm-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+            </form>
+            <p class="auth-footer">
+                Already have an account? <a href="#" onclick="showPage('login')">Login</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Share Request Modal -->
+    <div id="share-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeShareModal()">&times;</span>
+            <h2>Request Global Bank Nigeria Shares</h2>
+            <p>Send your request to purchase shares at $5 each</p>
+            <div class="share-details">
+                <p><strong>Total Capital:</strong> $2,000,000</p>
+                <p><strong>Price per Share:</strong> $5</p>
+                <p><strong>Email:</strong> adeganglobal@gmail.com</p>
+            </div>
+            <div class="form-group">
+                <label>Number of Shares</label>
+                <input type="number" id="share-quantity" min="1" placeholder="Enter quantity">
+            </div>
+            <button class="btn btn-primary" onclick="sendShareRequest()">
+                <i class="fas fa-paper-plane"></i> Send Request
+            </button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
